@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <h4>Support Palestine</h4>
+        <form method="POST">
+            <label for="original_url">Enter URL:</label>
+            <input type="url" id="original_url" name="original_url" required>
+            <button type="submit">Shorten</button>
+        </form>
+        {% if short_url %}
+        <div class="result">
+            <p>Shortened URL: <a href="{{ short_url }}">{{ request.host_url }}{{ short_url }}</a></p>
+        </div>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2024 CompCit. All rights reserved.</p>
+    </footer>
+</body>
+</html>
